@@ -1,53 +1,79 @@
 package com.demo.darkmode;
 
+import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
-import android.content.Intent;
-
-import android.view.View;
-import android.widget.Button;
-
-import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String NIGHT_MODE = "night_mode";
+    private SharedPreferences mSharedPref;
+    Switch switch1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            setTheme(R.style.DarkTheme);
+        // init shared preferences
+        mSharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        if (isNightModeEnabled()) {
+            setAppTheme(R.style.DarkTheme);
         } else {
-            setTheme(R.style.LightTheme);
+            setAppTheme(R.style.LightTheme);
         }
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnChangeTheme = findViewById(R.id.ChangeTheme);
-        btnChangeTheme.setOnClickListener(new View.OnClickListener() {
+        switch1 = findViewById(R.id.switch1);
+        // Get state from preferences
+        if (isNightModeEnabled()) {
+            switch1.setChecked(true);
+        } else {
+            switch1.setChecked(false);
+        }
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    FancyToast.makeText(getApplicationContext(), "Light Mode !", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (isNightModeEnabled()) {
+                    setIsNightModeEnabled(false);
+                    setAppTheme(R.style.LightTheme);
                 } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    FancyToast.makeText(getApplicationContext(), "Dark Mode !", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-
+                    setIsNightModeEnabled(true);
+                    setAppTheme(R.style.DarkTheme);
                 }
 
-                finish();
-                startActivity(new Intent(MainActivity.this, MainActivity.this.getClass()));
+                // Recreate activity
+                recreate();
             }
+
         });
 
-
     }
+
+
+    private void setAppTheme(@StyleRes int style) {
+        setTheme(style);
+    }
+
+    private boolean isNightModeEnabled() {
+        return mSharedPref.getBoolean(NIGHT_MODE, false);
+    }
+
+    private void setIsNightModeEnabled(boolean state) {
+        SharedPreferences.Editor mEditor = mSharedPref.edit();
+        mEditor.putBoolean(NIGHT_MODE, state);
+        mEditor.apply();
+    }
+
 }
 
