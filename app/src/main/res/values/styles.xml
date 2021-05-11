@@ -1,29 +1,60 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="autoCompleteTextViewStyle">@style/cursorColor</item>
     </style>
 
-    <style name="LightTheme" parent="AppTheme">
-        <item name="textColor">#000000</item>
-        <item name="metaTextColor">#606060</item>
-        <item name="bgColor">#ffffff</item>
-        <item name="CardColor">@color/white</item>
-        <item name="txtgreenColor">@color/green</item>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="DarkTheme" parent="AppTheme">
-        <item name="textColor">#ffffff</item>
-        <item name="metaTextColor">#aeaeae</item>
-        <item name="bgColor">#000000</item>
-        <item name="CardColor">@color/yt_dark</item>
-        <item name="txtgreenColor">@color/green</item>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="cursorColor" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textCursorDrawable">@color/white</item>
     </style>
 
+
+    <style name="ProgressBarSplash" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="ProgressBar" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="colorAccent">@color/progressbar_style</item>
+    </style>
+
+    <style name="editText_style" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorControlActivated">@color/cursor_editText</item>
+        <item name="android:textColorHighlight">@color/textView_select_text</item>
+    </style>
+
+    <style name="editText_home_style" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorControlActivated">@color/cursor_editText_home</item>
+        <item name="android:textColorHighlight">@color/textView_select_text_home</item>
+    </style>
+
+    <style name="DialogTitleTextStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogBodyTextStyle">@style/BodyTextStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="BodyTextStyle" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">@color/dialog_text</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/dialog_text_button</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/dialog_text_button</item>
+    </style>
 
 </resources>

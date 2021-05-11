@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="5dp"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@color/card_bg_them">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="15dp"
+        android:paddingTop="25dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="15dp">
+
+        <RadioGroup
+            android:id="@+id/radioGroup_them"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButton_system_them"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/system_default"
+                android:textColor="@color/textView_them"
+                app:buttonTint="@color/textView_app_color" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButton_light_them"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/light"
+                android:textColor="@color/textView_them"
+                app:buttonTint="@color/textView_app_color" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButton_dark_them"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/dark"
+                android:textColor="@color/textView_them"
+                app:buttonTint="@color/textView_app_color" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_ok_them"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/ok"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/textView_app_color"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cancel_them"
+            app:layout_constraintEnd_toStartOf="@+id/textView_cancel_them"
+            app:layout_constraintTop_toTopOf="@+id/textView_cancel_them" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cancel_them"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/cancel"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/textView_app_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup_them" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
